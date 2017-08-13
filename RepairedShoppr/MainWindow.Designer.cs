@@ -46,6 +46,15 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView_Tickets = new System.Windows.Forms.DataGridView();
+            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.customerbusinessthennameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subjectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._initDiag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createdatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updatedatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.problemtypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_ResetDataView = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -68,15 +77,6 @@
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
-            this.numberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerbusinessthennameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subjectDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._initDiag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createdatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatedatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.problemtypeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -240,6 +240,70 @@
             this.dataGridView_Tickets.TabIndex = 0;
             this.dataGridView_Tickets.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
+            // numberDataGridViewTextBoxColumn
+            // 
+            this.numberDataGridViewTextBoxColumn.DataPropertyName = "number";
+            this.numberDataGridViewTextBoxColumn.HeaderText = "Ticket";
+            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
+            this.numberDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // customerbusinessthennameDataGridViewTextBoxColumn
+            // 
+            this.customerbusinessthennameDataGridViewTextBoxColumn.DataPropertyName = "customer_business_then_name";
+            this.customerbusinessthennameDataGridViewTextBoxColumn.HeaderText = "Customer";
+            this.customerbusinessthennameDataGridViewTextBoxColumn.Name = "customerbusinessthennameDataGridViewTextBoxColumn";
+            this.customerbusinessthennameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // subjectDataGridViewTextBoxColumn
+            // 
+            this.subjectDataGridViewTextBoxColumn.DataPropertyName = "subject";
+            this.subjectDataGridViewTextBoxColumn.HeaderText = "Hardware";
+            this.subjectDataGridViewTextBoxColumn.Name = "subjectDataGridViewTextBoxColumn";
+            this.subjectDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // _initDiag
+            // 
+            this._initDiag.DataPropertyName = "GetComment";
+            this._initDiag.HeaderText = "Init Diag";
+            this._initDiag.Name = "_initDiag";
+            this._initDiag.ReadOnly = true;
+            // 
+            // createdatDataGridViewTextBoxColumn
+            // 
+            this.createdatDataGridViewTextBoxColumn.DataPropertyName = "created_at";
+            this.createdatDataGridViewTextBoxColumn.HeaderText = "Created at";
+            this.createdatDataGridViewTextBoxColumn.Name = "createdatDataGridViewTextBoxColumn";
+            this.createdatDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // updatedatDataGridViewTextBoxColumn
+            // 
+            this.updatedatDataGridViewTextBoxColumn.DataPropertyName = "updated_at";
+            this.updatedatDataGridViewTextBoxColumn.HeaderText = "Updated at";
+            this.updatedatDataGridViewTextBoxColumn.Name = "updatedatDataGridViewTextBoxColumn";
+            this.updatedatDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // problemtypeDataGridViewTextBoxColumn
+            // 
+            this.problemtypeDataGridViewTextBoxColumn.DataPropertyName = "problem_type";
+            this.problemtypeDataGridViewTextBoxColumn.HeaderText = "Problem";
+            this.problemtypeDataGridViewTextBoxColumn.Name = "problemtypeDataGridViewTextBoxColumn";
+            this.problemtypeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Ticket Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
             // button_ResetDataView
             // 
             this.button_ResetDataView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
@@ -351,7 +415,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1036, 153);
+            this.tabPage2.Size = new System.Drawing.Size(1044, 153);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tools";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -411,7 +475,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.button1.Location = new System.Drawing.Point(110, 9);
+            this.button1.Location = new System.Drawing.Point(119, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 30);
             this.button1.TabIndex = 11;
@@ -452,70 +516,6 @@
             // 
             this.menuItem1.Index = 0;
             this.menuItem1.Text = "File";
-            // 
-            // numberDataGridViewTextBoxColumn
-            // 
-            this.numberDataGridViewTextBoxColumn.DataPropertyName = "number";
-            this.numberDataGridViewTextBoxColumn.HeaderText = "Ticket";
-            this.numberDataGridViewTextBoxColumn.Name = "numberDataGridViewTextBoxColumn";
-            this.numberDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // customerbusinessthennameDataGridViewTextBoxColumn
-            // 
-            this.customerbusinessthennameDataGridViewTextBoxColumn.DataPropertyName = "customer_business_then_name";
-            this.customerbusinessthennameDataGridViewTextBoxColumn.HeaderText = "Customer";
-            this.customerbusinessthennameDataGridViewTextBoxColumn.Name = "customerbusinessthennameDataGridViewTextBoxColumn";
-            this.customerbusinessthennameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // subjectDataGridViewTextBoxColumn
-            // 
-            this.subjectDataGridViewTextBoxColumn.DataPropertyName = "subject";
-            this.subjectDataGridViewTextBoxColumn.HeaderText = "Hardware";
-            this.subjectDataGridViewTextBoxColumn.Name = "subjectDataGridViewTextBoxColumn";
-            this.subjectDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // _initDiag
-            // 
-            this._initDiag.DataPropertyName = "GetComment";
-            this._initDiag.HeaderText = "Init Diag";
-            this._initDiag.Name = "_initDiag";
-            this._initDiag.ReadOnly = true;
-            // 
-            // createdatDataGridViewTextBoxColumn
-            // 
-            this.createdatDataGridViewTextBoxColumn.DataPropertyName = "created_at";
-            this.createdatDataGridViewTextBoxColumn.HeaderText = "Created at";
-            this.createdatDataGridViewTextBoxColumn.Name = "createdatDataGridViewTextBoxColumn";
-            this.createdatDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // updatedatDataGridViewTextBoxColumn
-            // 
-            this.updatedatDataGridViewTextBoxColumn.DataPropertyName = "updated_at";
-            this.updatedatDataGridViewTextBoxColumn.HeaderText = "Updated at";
-            this.updatedatDataGridViewTextBoxColumn.Name = "updatedatDataGridViewTextBoxColumn";
-            this.updatedatDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // problemtypeDataGridViewTextBoxColumn
-            // 
-            this.problemtypeDataGridViewTextBoxColumn.DataPropertyName = "problem_type";
-            this.problemtypeDataGridViewTextBoxColumn.HeaderText = "Problem";
-            this.problemtypeDataGridViewTextBoxColumn.Name = "problemtypeDataGridViewTextBoxColumn";
-            this.problemtypeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Ticket Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
             // 
             // MainWindow
             // 
