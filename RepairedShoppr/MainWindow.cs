@@ -15,6 +15,7 @@ namespace RepairedShopr
     public partial class MainWindow : Form
     {
         APIClient _APIClient;
+        APIClient.RootObject lastTickets;
 
         public MainWindow()
         {
@@ -55,16 +56,28 @@ namespace RepairedShopr
 
             //Load the API and then pull the tickets using it
             _APIClient.LoadAPI();
-            APIClient.RootObject tickets = await _APIClient.DownloadTickets();
-            LoadDataView(tickets);
-            textBox_Ticket_Issue.Text = tickets.tickets[0].GetInitIssue;
+            APIClient.RootObject root = await _APIClient.CallAPI(APIClient.APIFunctions.Tickets.GetTickets());
+            LoadDataView(root);
+            lastTickets = root;
+            UpdateTicketInfoAsync();
+
+        }
+
+        private async Task UpdateTicketInfoAsync(int index = 0)
+        {
+            textBox_Ticket_Issue.Text = lastTickets.tickets[index].GetInitIssue;
+            label_Password.Text = "Password: " + lastTickets.tickets[index].properties.Password;
+            groupBox_Customer.Text = lastTickets.tickets[index].customer_business_then_name;
+            APIClient.RootObject customers = await _APIClient.DownloadCustomers(lastTickets.tickets[index].customer_business_then_name);
+            label_Phone.Text = "Phone: " + customers.customers[0].phone;
+            label_Email.Text = "Email: " + customers.customers[0].email;
         }
 
         private async void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             string query = "";
             query = ((ComboBox)sender).SelectedValue.ToString();
-            APIClient.RootObject tickets = await _APIClient.DownloadTickets(query);
+            APIClient.RootObject tickets = await _APIClient.CallAPI(APIClient.APIFunctions.Tickets.GetTickets("&query="+query));
             //MessageBox.Show(tickets.tickets[0].comments[tickets.tickets[0].comments.Count - 1].body);
         }
 
@@ -90,7 +103,7 @@ namespace RepairedShopr
         /// <param name="e">Paramenters passed with the event</param>
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-
+            label_Phone.Text = "LOADING DATA";
             try
             {   //Attempts to pull the computer brand name from the selected customer and autofill the parts searchbox
                 string[] tmparray = dataGridView_Tickets.SelectedRows[0].Cells[2].Value.ToString().Split(' ');
@@ -98,12 +111,14 @@ namespace RepairedShopr
                 brand = (tmparray[0] == "Rework:") ? tmparray[1] + " " : tmparray[0] + " ";
                 textBox_CustBrandParts.Text = brand;
 
-                string ticketID = this.dataGridView_Tickets.SelectedRows[0].Cells["id"].Value.ToString();
-                string initIssue = this.dataGridView_Comments.Rows[dataGridView_Comments.Rows.Count - 2].Cells[3].Value.ToString();
+                
+                int ind = dataGridView_Tickets.SelectedRows[0].Index;
+                UpdateTicketInfoAsync(ind);
 
-                textBox_Ticket_Issue.Text = initIssue;
+
             }
             catch { }
+
         }
 
         private void dataGridView_Comments_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -166,6 +181,12 @@ namespace RepairedShopr
             id.StartPosition = FormStartPosition.CenterParent;
             id.ShowDialog();
 
+        }
+
+        private async void menuItem8_Click(object sender, EventArgs e)
+        {
+            APIClient.RootObject tickets = await _APIClient.CallAPI(APIClient.APIFunctions.Customers.FindByID, "12998142");
+            MessageBox.Show(tickets.customers[0].fullname);
         }
     }
 }

@@ -47,10 +47,30 @@ namespace RepairedShopr
 
         public class APIFunctions
         {
-            public static string Tickets = "tickets" + api_key;
-            public static string Customers = "customers" + api_key;
-            public static string Invoices = "invoices" + api_key;
-            public static string Parts = "products" + api_key;
+            public static class Tickets 
+            {
+                public static string GetTickets(string parameter = "") 
+                {
+                    return "tickets/" + parameter;
+                }
+            }
+            
+            public static class Customers
+            {
+                public static string index = "customers"; 
+                public static string FindByID = "customers/";
+            }
+            
+            public static class Invoices
+            {
+                public static string call = "invoices" + api_key;
+
+            }
+            public static class Products
+            {
+                public static string call = "products" + api_key;
+
+            }
         };
 
         public APIClient()
@@ -100,6 +120,22 @@ namespace RepairedShopr
         }
 
 
+       
+        public async Task<RootObject> CallAPI(string APIfunction, string call = "")
+        {
+            ProgressUpdated(this, new ProgressArgs(0, "<API> Querying API ... "));
+            RootObject root = null;
+            string parameters = APIfunction + call + api_key;
+            ProgressUpdated(this, new ProgressArgs(33, "<API> Downloading api data ... "));
+            HttpResponseMessage response = await client.GetAsync(parameters);
+            if (response.IsSuccessStatusCode)
+            {
+                root = await response.Content.ReadAsAsync<RootObject>();
+                ProgressUpdated(this, new ProgressArgs(100, "<API> Complete. "));
+            }
+            return root;
+        }
+
         public async Task<RootObject> DownloadTickets(string query = "")
         {
             ProgressUpdated(this, new ProgressArgs(0, "<Search> Query API ... "));
@@ -108,7 +144,7 @@ namespace RepairedShopr
             {
                 query = "&number=" + query;
             }
-            string call = APIFunctions.Tickets + query;
+            string call = APIFunctions.Tickets.GetTickets(query);
             ProgressUpdated(this, new ProgressArgs(33, "<Search> Downloading ticket data ... "));
             HttpResponseMessage response = await client.GetAsync(call);
             if (response.IsSuccessStatusCode)
@@ -119,6 +155,25 @@ namespace RepairedShopr
             return tickets;
         }
 
+
+        public async Task<RootObject> DownloadCustomers(string query = "")
+        {
+            ProgressUpdated(this, new ProgressArgs(0, "<Search> Query API ... "));
+            RootObject customers = null;
+            if (query != "")
+            {
+                query = "&query=" + query;
+            }
+            string call = APIFunctions.Customers.index + query + api_key;
+            ProgressUpdated(this, new ProgressArgs(33, "<Search> Downloading customer data ... "));
+            HttpResponseMessage response = await client.GetAsync(call);
+            if (response.IsSuccessStatusCode)
+            {
+                customers = await response.Content.ReadAsAsync<RootObject>();
+                ProgressUpdated(this, new ProgressArgs(100, "<Search> Complete. "));
+            }
+            return customers;
+        }
         /// <summary>
         /// The root object that contains the child elements returned from the RepairShopr API.
         /// </summary>
