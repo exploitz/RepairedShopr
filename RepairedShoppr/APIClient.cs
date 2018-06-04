@@ -12,7 +12,7 @@ namespace RepairedShopr
 
     public class APIClient
     {
-        private string APIkey = "26c8b5ef-2a0b-49ea-b088-090a2cff9ddb";
+        private string APIkey = "";
         private string APIurl = "https://wwwarlingtoncomputercare.repairshopr.com/api/v1/";
         private static string api_key;
         private static HttpClient client;
