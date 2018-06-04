@@ -12,7 +12,7 @@ namespace RepairedShopr
 
     public class APIClient
     {
-        private string APIkey = "51e372a7-23ad-450f-af0f-6b8cef11777c";
+        private string APIkey = "26c8b5ef-2a0b-49ea-b088-090a2cff9ddb";
         private string APIurl = "https://wwwarlingtoncomputercare.repairshopr.com/api/v1/";
         private static string api_key;
         private static HttpClient client;
@@ -100,7 +100,7 @@ namespace RepairedShopr
         }
 
 
-        public async Task<RootObject> SearchTickets(string query = "")
+        public async Task<RootObject> DownloadTickets(string query = "")
         {
             ProgressUpdated(this, new ProgressArgs(0, "<Search> Query API ... "));
             RootObject tickets = null;
@@ -191,7 +191,7 @@ namespace RepairedShopr
             public string _TicketData { get { return this.number + " - " + this.customer_business_then_name; } }
 
             private string comment;
-            public string GetComment
+            public string GetInitIssue
             {
                 get
                 {
@@ -203,7 +203,7 @@ namespace RepairedShopr
         }
 
         /// <summary>
-        /// Class that holds the commend data returned from the RepairShopr API.
+        /// Class that holds the comment data returned from the RepairShopr API.
         /// </summary>
         public class Comment
         {
@@ -228,7 +228,6 @@ namespace RepairedShopr
             public string Password { get; set; }
             [JsonProperty("AC Adapter")]
             public string AC_Adapter { get; set; }
-
             [JsonProperty("Important Data ")]
             public string ImportantData { get; set; }
             

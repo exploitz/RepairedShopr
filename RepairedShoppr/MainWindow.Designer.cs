@@ -77,6 +77,12 @@
             this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
             this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.menuItem__Settings_RepairShopr = new System.Windows.Forms.MenuItem();
+            this.textBox_Ticket_Issue = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -87,6 +93,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Comments)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -96,50 +105,46 @@
             this.toolStripStatusLabel_Status,
             this.toolStripStatusLabel1,
             this.toolStripProgressBar_Status});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 713);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 637);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1080, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(810, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel_Status
             // 
             this.toolStripStatusLabel_Status.Name = "toolStripStatusLabel_Status";
-            this.toolStripStatusLabel_Status.Size = new System.Drawing.Size(34, 21);
+            this.toolStripStatusLabel_Status.Size = new System.Drawing.Size(26, 17);
             this.toolStripStatusLabel_Status.Text = "Idle";
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(891, 21);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(667, 17);
             this.toolStripStatusLabel1.Spring = true;
             this.toolStripStatusLabel1.Text = " ";
             // 
             // toolStripProgressBar_Status
             // 
             this.toolStripProgressBar_Status.Name = "toolStripProgressBar_Status";
-            this.toolStripProgressBar_Status.Size = new System.Drawing.Size(133, 20);
+            this.toolStripProgressBar_Status.Size = new System.Drawing.Size(100, 16);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(647, 9);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(485, 7);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(413, 78);
+            this.groupBox1.Size = new System.Drawing.Size(310, 63);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Quick Select";
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(351, 30);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Location = new System.Drawing.Point(263, 24);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(53, 28);
+            this.button4.Size = new System.Drawing.Size(40, 23);
             this.button4.TabIndex = 7;
             this.button4.Text = ">";
             this.button4.UseVisualStyleBackColor = true;
@@ -153,11 +158,10 @@
             this.comboBox1.DisplayMember = "_TicketData";
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(23, 23);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox1.Location = new System.Drawing.Point(17, 19);
             this.comboBox1.MaxLength = 4;
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(319, 37);
+            this.comboBox1.Size = new System.Drawing.Size(240, 32);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.ValueMember = "number";
             this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
@@ -173,10 +177,9 @@
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
-            this.listView1.Location = new System.Drawing.Point(16, 575);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4);
+            this.listView1.Location = new System.Drawing.Point(12, 467);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(60, 58);
+            this.listView1.Size = new System.Drawing.Size(46, 48);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -200,11 +203,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dataGridView_Tickets);
-            this.groupBox2.Location = new System.Drawing.Point(15, 335);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox2.Location = new System.Drawing.Point(11, 321);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(1052, 374);
+            this.groupBox2.Size = new System.Drawing.Size(789, 304);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ticket View";
@@ -230,13 +231,12 @@
             this.id});
             this.dataGridView_Tickets.DataSource = this.ticketsBindingSource;
             this.dataGridView_Tickets.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_Tickets.Location = new System.Drawing.Point(4, 19);
-            this.dataGridView_Tickets.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView_Tickets.Location = new System.Drawing.Point(3, 16);
             this.dataGridView_Tickets.MultiSelect = false;
             this.dataGridView_Tickets.Name = "dataGridView_Tickets";
             this.dataGridView_Tickets.ReadOnly = true;
             this.dataGridView_Tickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Tickets.Size = new System.Drawing.Size(1044, 351);
+            this.dataGridView_Tickets.Size = new System.Drawing.Size(783, 285);
             this.dataGridView_Tickets.TabIndex = 0;
             this.dataGridView_Tickets.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -307,10 +307,9 @@
             // button_ResetDataView
             // 
             this.button_ResetDataView.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.button_ResetDataView.Location = new System.Drawing.Point(16, 9);
-            this.button_ResetDataView.Margin = new System.Windows.Forms.Padding(4);
+            this.button_ResetDataView.Location = new System.Drawing.Point(638, 138);
             this.button_ResetDataView.Name = "button_ResetDataView";
-            this.button_ResetDataView.Size = new System.Drawing.Size(87, 30);
+            this.button_ResetDataView.Size = new System.Drawing.Size(65, 24);
             this.button_ResetDataView.TabIndex = 9;
             this.button_ResetDataView.Text = "Refresh";
             this.button_ResetDataView.UseVisualStyleBackColor = true;
@@ -320,21 +319,19 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(15, 145);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabControl1.Location = new System.Drawing.Point(14, 167);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1052, 182);
+            this.tabControl1.Size = new System.Drawing.Size(789, 148);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dataGridView_Comments);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(1044, 153);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(781, 122);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Comments";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -355,11 +352,10 @@
             this.dataGridView_Comments.DataMember = "comments";
             this.dataGridView_Comments.DataSource = this.ticketsBindingSource;
             this.dataGridView_Comments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_Comments.Location = new System.Drawing.Point(4, 4);
-            this.dataGridView_Comments.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView_Comments.Location = new System.Drawing.Point(3, 3);
             this.dataGridView_Comments.MultiSelect = false;
             this.dataGridView_Comments.Name = "dataGridView_Comments";
-            this.dataGridView_Comments.Size = new System.Drawing.Size(1036, 145);
+            this.dataGridView_Comments.Size = new System.Drawing.Size(775, 116);
             this.dataGridView_Comments.TabIndex = 0;
             this.dataGridView_Comments.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_Comments_CellMouseDown);
             this.dataGridView_Comments.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dataGridView_Comments_DataError);
@@ -411,11 +407,10 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(1044, 153);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(781, 122);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Tools";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -426,48 +421,44 @@
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.textBox_CustBrandParts);
             this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Location = new System.Drawing.Point(8, 8);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox3.Size = new System.Drawing.Size(271, 137);
+            this.groupBox3.Size = new System.Drawing.Size(203, 111);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Search Parts Online";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(27, 95);
+            this.button5.Location = new System.Drawing.Point(20, 77);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(212, 28);
+            this.button5.Size = new System.Drawing.Size(159, 23);
             this.button5.TabIndex = 6;
             this.button5.Text = "Vendor";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(27, 60);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(20, 49);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(100, 28);
+            this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 4;
             this.button3.Text = "Amazon";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // textBox_CustBrandParts
             // 
-            this.textBox_CustBrandParts.Location = new System.Drawing.Point(27, 29);
-            this.textBox_CustBrandParts.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_CustBrandParts.Location = new System.Drawing.Point(20, 24);
             this.textBox_CustBrandParts.Name = "textBox_CustBrandParts";
-            this.textBox_CustBrandParts.Size = new System.Drawing.Size(212, 22);
+            this.textBox_CustBrandParts.Size = new System.Drawing.Size(160, 20);
             this.textBox_CustBrandParts.TabIndex = 1;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(140, 60);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(105, 49);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
+            this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
             this.button2.Text = "Ebay";
             this.button2.UseVisualStyleBackColor = true;
@@ -475,9 +466,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            this.button1.Location = new System.Drawing.Point(119, 9);
+            this.button1.Location = new System.Drawing.Point(708, 138);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 30);
+            this.button1.Size = new System.Drawing.Size(89, 24);
             this.button1.TabIndex = 11;
             this.button1.Text = "Add Comment";
             this.button1.UseVisualStyleBackColor = true;
@@ -510,19 +502,73 @@
             // mainMenu1
             // 
             this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem1});
+            this.menuItem1,
+            this.menuItem5});
             // 
             // menuItem1
             // 
             this.menuItem1.Index = 0;
             this.menuItem1.Text = "File";
             // 
+            // menuItem5
+            // 
+            this.menuItem5.Index = 1;
+            this.menuItem5.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem__Settings_RepairShopr});
+            this.menuItem5.Text = "Settings";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.panel1);
+            this.groupBox4.Location = new System.Drawing.Point(18, 7);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(461, 154);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Ticket Info";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.groupBox5);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(455, 135);
+            this.panel1.TabIndex = 13;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textBox_Ticket_Issue);
+            this.groupBox5.Location = new System.Drawing.Point(3, 3);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(449, 56);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Issue";
+            // 
+            // menuItem__Settings_RepairShopr
+            // 
+            this.menuItem__Settings_RepairShopr.Index = 0;
+            this.menuItem__Settings_RepairShopr.Text = "RepairShopr";
+            // 
+            // textBox_Ticket_Issue
+            // 
+            this.textBox_Ticket_Issue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox_Ticket_Issue.Location = new System.Drawing.Point(13, 18);
+            this.textBox_Ticket_Issue.Margin = new System.Windows.Forms.Padding(10);
+            this.textBox_Ticket_Issue.Multiline = true;
+            this.textBox_Ticket_Issue.Name = "textBox_Ticket_Issue";
+            this.textBox_Ticket_Issue.ReadOnly = true;
+            this.textBox_Ticket_Issue.Size = new System.Drawing.Size(423, 26);
+            this.textBox_Ticket_Issue.TabIndex = 0;
+            // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1080, 739);
+            this.ClientSize = new System.Drawing.Size(810, 659);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button_ResetDataView);
             this.Controls.Add(this.groupBox2);
@@ -531,7 +577,6 @@
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Menu = this.mainMenu1;
             this.Name = "MainWindow";
             this.Text = "RepairedShopr";
@@ -547,6 +592,10 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,6 +647,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn problemtypeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.MenuItem menuItem5;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.MenuItem menuItem__Settings_RepairShopr;
+        private System.Windows.Forms.TextBox textBox_Ticket_Issue;
     }
 }
 
