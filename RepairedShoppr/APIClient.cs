@@ -14,7 +14,7 @@ namespace RepairedShopr
     {
         private string APIkey = "";
         private string APIurl = "https://wwwarlingtoncomputercare.repairshopr.com/api/v1/";
-        private static string api_key;
+        //private static string api_key;
         private static HttpClient client;
 
         public delegate void ProgressHandler(object sender, ProgressArgs progressArgs);
@@ -45,34 +45,6 @@ namespace RepairedShopr
             { get { return message; } }
         }
 
-        public class APIFunctions
-        {
-            public static class Tickets 
-            {
-                public static string GetTickets(string parameter = "") 
-                {
-                    return "tickets/" + parameter;
-                }
-            }
-            
-            public static class Customers
-            {
-                public static string index = "customers"; 
-                public static string FindByID = "customers/";
-            }
-            
-            public static class Invoices
-            {
-                public static string call = "invoices" + api_key;
-
-            }
-            public static class Products
-            {
-                public static string call = "products" + api_key;
-
-            }
-        };
-
         public APIClient()
         {
             
@@ -83,7 +55,6 @@ namespace RepairedShopr
             try
             {
                 client = new HttpClient();
-                api_key = "?api_key=" + APIkey;
 
                 client.BaseAddress = new Uri(APIurl);
                 client.DefaultRequestHeaders.Accept.Clear();
@@ -119,15 +90,49 @@ namespace RepairedShopr
             }
         }
 
+        public async void APIPost(string apiFunction, List<KeyValuePair<string, string>> args = null)
+        {
+            //https://wwwarlingtoncomputercare.repairshopr.com/api/v1/tickets/4222419/comment?api_key=51e372a7-23ad-450f-af0f-6b8cef11777c&hidden=1&subject=Update&body=RepairdShopr API Test Comment 1
+            ProgressUpdated(this, new ProgressArgs(0, "<API> Sending POST query ..."));
+            if (apiFunction != "")
+            {
+                List<KeyValuePair<string, string>> parameters = args;
 
-       
-        public async Task<RootObject> CallAPI(string APIfunction, string call = "")
+                var content = new FormUrlEncodedContent(parameters);
+                var response = await client.PostAsync(apiFunction, content);
+                //var response = await client.PostAsync("https://wwwarlingtoncomputercare.repairshopr.com/api/v1/tickets/" + ticketID + "/comment?", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    ProgressUpdated(this, new ProgressArgs(100, "<Comment> Ticket comment submitted successfully!"));
+                }
+            }
+        }
+
+
+        public async Task<RootObject> APIGet(string apiFunction, List<KeyValuePair<string, string>> args = null)
         {
             ProgressUpdated(this, new ProgressArgs(0, "<API> Querying API ... "));
             RootObject root = null;
-            string parameters = APIfunction + call + api_key;
+
+            //Construct query string here....
+            string baseFunctionCall = apiFunction;
+            List<KeyValuePair<string, string>> parameters;
+
+            if (args != null)
+                parameters = args;
+            else 
+                parameters = new List<KeyValuePair<string, string>>();
+            
+            parameters.Add(new KeyValuePair<string, string>("api_key", APIkey));
+            var content = APIFunctions.EncodeVariables(parameters);
+            
             ProgressUpdated(this, new ProgressArgs(33, "<API> Downloading api data ... "));
-            HttpResponseMessage response = await client.GetAsync(parameters);
+
+            HttpResponseMessage response = null;
+            if (apiFunction.Contains("?"))
+                response = await client.GetAsync(baseFunctionCall + "&" + content);
+            else
+                response = await client.GetAsync(baseFunctionCall + "?" + content);
             if (response.IsSuccessStatusCode)
             {
                 root = await response.Content.ReadAsAsync<RootObject>();
@@ -136,44 +141,7 @@ namespace RepairedShopr
             return root;
         }
 
-        public async Task<RootObject> DownloadTickets(string query = "")
-        {
-            ProgressUpdated(this, new ProgressArgs(0, "<Search> Query API ... "));
-            RootObject tickets = null;
-            if (query != "")
-            {
-                query = "&number=" + query;
-            }
-            string call = APIFunctions.Tickets.GetTickets(query);
-            ProgressUpdated(this, new ProgressArgs(33, "<Search> Downloading ticket data ... "));
-            HttpResponseMessage response = await client.GetAsync(call);
-            if (response.IsSuccessStatusCode)
-            {
-                tickets = await response.Content.ReadAsAsync<RootObject>();
-                ProgressUpdated(this, new ProgressArgs(100, "<Search> Complete. "));
-            }
-            return tickets;
-        }
-
-
-        public async Task<RootObject> DownloadCustomers(string query = "")
-        {
-            ProgressUpdated(this, new ProgressArgs(0, "<Search> Query API ... "));
-            RootObject customers = null;
-            if (query != "")
-            {
-                query = "&query=" + query;
-            }
-            string call = APIFunctions.Customers.index + query + api_key;
-            ProgressUpdated(this, new ProgressArgs(33, "<Search> Downloading customer data ... "));
-            HttpResponseMessage response = await client.GetAsync(call);
-            if (response.IsSuccessStatusCode)
-            {
-                customers = await response.Content.ReadAsAsync<RootObject>();
-                ProgressUpdated(this, new ProgressArgs(100, "<Search> Complete. "));
-            }
-            return customers;
-        }
+        
         /// <summary>
         /// The root object that contains the child elements returned from the RepairShopr API.
         /// </summary>

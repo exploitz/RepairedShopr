@@ -75,17 +75,18 @@
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem__Settings_RepairShopr = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
+            this.menuItem7 = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox_Customer = new System.Windows.Forms.GroupBox();
+            this.label_Email = new System.Windows.Forms.Label();
+            this.label_Phone = new System.Windows.Forms.Label();
             this.label_Password = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBox_Ticket_Issue = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label_Phone = new System.Windows.Forms.Label();
-            this.label_Email = new System.Windows.Forms.Label();
-            this.menuItem7 = new System.Windows.Forms.MenuItem();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.button_refresh = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsBindingSource)).BeginInit();
@@ -135,6 +136,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button_refresh);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Location = new System.Drawing.Point(485, 7);
@@ -146,9 +148,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(263, 24);
+            this.button4.Location = new System.Drawing.Point(256, 23);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(40, 23);
+            this.button4.Size = new System.Drawing.Size(17, 23);
             this.button4.TabIndex = 7;
             this.button4.Text = ">";
             this.button4.UseVisualStyleBackColor = true;
@@ -160,12 +162,13 @@
             this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox1.DataSource = this.ticketsBindingSource;
             this.comboBox1.DisplayMember = "_TicketData";
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(17, 19);
             this.comboBox1.MaxLength = 4;
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(240, 32);
+            this.comboBox1.Size = new System.Drawing.Size(233, 32);
             this.comboBox1.TabIndex = 6;
             this.comboBox1.ValueMember = "number";
             this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
@@ -496,6 +499,19 @@
             this.menuItem6.Index = 1;
             this.menuItem6.Text = "Mini View";
             // 
+            // menuItem7
+            // 
+            this.menuItem7.Index = 2;
+            this.menuItem7.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem8});
+            this.menuItem7.Text = "Debug";
+            // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 0;
+            this.menuItem8.Text = "Test";
+            this.menuItem8.Click += new System.EventHandler(this.menuItem8_Click);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.panel1);
@@ -521,7 +537,7 @@
             this.groupBox_Customer.Controls.Add(this.label_Email);
             this.groupBox_Customer.Controls.Add(this.label_Phone);
             this.groupBox_Customer.Controls.Add(this.label_Password);
-            this.groupBox_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox_Customer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox_Customer.Location = new System.Drawing.Point(3, 65);
             this.groupBox_Customer.Name = "groupBox_Customer";
             this.groupBox_Customer.Size = new System.Drawing.Size(449, 67);
@@ -529,19 +545,38 @@
             this.groupBox_Customer.TabStop = false;
             this.groupBox_Customer.Text = "Customer";
             // 
+            // label_Email
+            // 
+            this.label_Email.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label_Email.AutoSize = true;
+            this.label_Email.Location = new System.Drawing.Point(191, 19);
+            this.label_Email.Name = "label_Email";
+            this.label_Email.Size = new System.Drawing.Size(38, 13);
+            this.label_Email.TabIndex = 4;
+            this.label_Email.Text = "Email: ";
+            // 
+            // label_Phone
+            // 
+            this.label_Phone.AutoSize = true;
+            this.label_Phone.Location = new System.Drawing.Point(11, 44);
+            this.label_Phone.Name = "label_Phone";
+            this.label_Phone.Size = new System.Drawing.Size(47, 13);
+            this.label_Phone.TabIndex = 3;
+            this.label_Phone.Text = "Contact:";
+            // 
             // label_Password
             // 
             this.label_Password.AutoSize = true;
             this.label_Password.Location = new System.Drawing.Point(10, 19);
             this.label_Password.Name = "label_Password";
-            this.label_Password.Size = new System.Drawing.Size(64, 15);
+            this.label_Password.Size = new System.Drawing.Size(56, 13);
             this.label_Password.TabIndex = 1;
             this.label_Password.Text = "Password:";
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.textBox_Ticket_Issue);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(449, 56);
@@ -570,37 +605,15 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Diagnostics Checklist";
             // 
-            // label_Phone
+            // button_refresh
             // 
-            this.label_Phone.AutoSize = true;
-            this.label_Phone.Location = new System.Drawing.Point(11, 44);
-            this.label_Phone.Name = "label_Phone";
-            this.label_Phone.Size = new System.Drawing.Size(51, 15);
-            this.label_Phone.TabIndex = 3;
-            this.label_Phone.Text = "Contact:";
-            // 
-            // label_Email
-            // 
-            this.label_Email.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label_Email.AutoSize = true;
-            this.label_Email.Location = new System.Drawing.Point(191, 19);
-            this.label_Email.Name = "label_Email";
-            this.label_Email.Size = new System.Drawing.Size(45, 15);
-            this.label_Email.TabIndex = 4;
-            this.label_Email.Text = "Email: ";
-            // 
-            // menuItem7
-            // 
-            this.menuItem7.Index = 2;
-            this.menuItem7.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
-            this.menuItem8});
-            this.menuItem7.Text = "Debug";
-            // 
-            // menuItem8
-            // 
-            this.menuItem8.Index = 0;
-            this.menuItem8.Text = "Test";
-            this.menuItem8.Click += new System.EventHandler(this.menuItem8_Click);
+            this.button_refresh.Location = new System.Drawing.Point(279, 23);
+            this.button_refresh.Name = "button_refresh";
+            this.button_refresh.Size = new System.Drawing.Size(17, 23);
+            this.button_refresh.TabIndex = 8;
+            this.button_refresh.Text = "R";
+            this.button_refresh.UseVisualStyleBackColor = true;
+            this.button_refresh.Click += new System.EventHandler(this.button_refresh_ClickAsync);
             // 
             // MainWindow
             // 
@@ -697,6 +710,7 @@
         private System.Windows.Forms.Label label_Email;
         private System.Windows.Forms.MenuItem menuItem7;
         private System.Windows.Forms.MenuItem menuItem8;
+        private System.Windows.Forms.Button button_refresh;
     }
 }
 

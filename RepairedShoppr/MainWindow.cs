@@ -56,10 +56,18 @@ namespace RepairedShopr
 
             //Load the API and then pull the tickets using it
             _APIClient.LoadAPI();
-            APIClient.RootObject root = await _APIClient.CallAPI(APIClient.APIFunctions.Tickets.GetTickets());
-            LoadDataView(root);
-            lastTickets = root;
-            UpdateTicketInfoAsync();
+            APIClient.RootObject root = await _APIClient.APIGet(
+                new APIFunctions.Tickets().GetTickets(
+                    APIFunctions.Tickets.TicketStatusOptions.NotClosed));
+            if(LoadDataView(root))
+            {
+                lastTickets = root;
+                UpdateTicketInfoAsync();
+            }
+            else
+            {
+                //Error handling
+            }
 
         }
 
@@ -68,7 +76,11 @@ namespace RepairedShopr
             textBox_Ticket_Issue.Text = lastTickets.tickets[index].GetInitIssue;
             label_Password.Text = "Password: " + lastTickets.tickets[index].properties.Password;
             groupBox_Customer.Text = lastTickets.tickets[index].customer_business_then_name;
-            APIClient.RootObject customers = await _APIClient.DownloadCustomers(lastTickets.tickets[index].customer_business_then_name);
+            APIClient.RootObject customers = await _APIClient.APIGet(new APIFunctions.Customers().GetCustomers(),
+                new List<KeyValuePair<string, string>> {
+                    new KeyValuePair<string, string>("query", lastTickets.tickets[index].customer_business_then_name) 
+                    });
+
             label_Phone.Text = "Phone: " + customers.customers[0].phone;
             label_Email.Text = "Email: " + customers.customers[0].email;
         }
@@ -77,7 +89,10 @@ namespace RepairedShopr
         {
             string query = "";
             query = ((ComboBox)sender).SelectedValue.ToString();
-            APIClient.RootObject tickets = await _APIClient.CallAPI(APIClient.APIFunctions.Tickets.GetTickets("&query="+query));
+            APIClient.RootObject tickets = await _APIClient.APIGet(new APIFunctions.Customers().GetCustomers(),
+                new List<KeyValuePair<string, string>> {
+                    new KeyValuePair<string, string>("query", query)
+                    });
             //MessageBox.Show(tickets.tickets[0].comments[tickets.tickets[0].comments.Count - 1].body);
         }
 
@@ -85,14 +100,16 @@ namespace RepairedShopr
         {
             string query = "";
             query = comboBox1.Text;
-            APIClient.RootObject tickets = await _APIClient.DownloadTickets(query);
-            //MessageBox.Show(tickets.tickets[0].comments[tickets.tickets[0].comments.Count - 1].body);
+            APIClient.RootObject tickets = await _APIClient.APIGet(new APIFunctions.Tickets().GetTickets(),
+                new List<KeyValuePair<string, string>> {
+                    new KeyValuePair<string, string>("query", query)
+                    });
             LoadDataView(tickets);
         }
 
         private async void button_ResetDataView_Click(object sender, EventArgs e)
         {
-            APIClient.RootObject tickets = await _APIClient.DownloadTickets();
+            APIClient.RootObject tickets = await _APIClient.APIGet(new APIFunctions.Tickets().GetTickets());
             LoadDataView(tickets);
         }
 
@@ -114,8 +131,6 @@ namespace RepairedShopr
                 
                 int ind = dataGridView_Tickets.SelectedRows[0].Index;
                 UpdateTicketInfoAsync(ind);
-
-
             }
             catch { }
 
@@ -185,8 +200,14 @@ namespace RepairedShopr
 
         private async void menuItem8_Click(object sender, EventArgs e)
         {
-            APIClient.RootObject tickets = await _APIClient.CallAPI(APIClient.APIFunctions.Customers.FindByID, "12998142");
-            MessageBox.Show(tickets.customers[0].fullname);
+           //APIClient.RootObject tickets = await _APIClient.CallAPI(APIClient.APIFunctions.Customers.FindByID, "12998142");
+           //MessageBox.Show(tickets.customers[0].fullname);
+        }
+
+        private async void button_refresh_ClickAsync(object sender, EventArgs e)
+        {
+            APIClient.RootObject tickets = await _APIClient.APIGet(new APIFunctions.Tickets().GetTickets());
+            LoadDataView(tickets);
         }
     }
 }

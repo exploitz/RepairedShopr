@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIClient.cs" />
+    <Compile Include="APIFunctions.cs" />
     <Compile Include="InputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
