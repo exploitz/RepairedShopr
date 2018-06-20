@@ -22,6 +22,16 @@ namespace RepairedShopr
         {
             private string baseAPIurl = "tickets/";
 
+            public static class TicketCommentOptions
+            {
+                public static string InitialIssue = "Initial Issue";
+                public static string Diagnosis = "Diagnosis";
+                public static string Update = "Update";
+                public static string Contacted = "Contacted";
+                public static string Approval = "Approval";
+                public static string Complete = "Complete";
+            }
+
             public static class TicketStatusOptions
             {
                 public static string NotClosed = "Not Closed";
@@ -37,16 +47,21 @@ namespace RepairedShopr
                 string ticket_search_id = "")
             {
 
-                //List<KeyValuePair<string, string>> args = new List<KeyValuePair<string, string>>();
                 string content = "";
                 if (status != "")
                    content = EncodeVariables(BuildAPICall(nameof(status), status));
                 return baseAPIurl + "?" + content;
             }
 
-            public string AddComment(List<KeyValuePair<string,string>> args)
+            public string AddComment(string ticketID, string comment, string subject)
             {
-                return "";
+                //var response = await client.PostAsync("https://wwwarlingtoncomputercare.repairshopr.com/api/v1/tickets/" + ticketID + "/comment?", content);
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>();
+                parameters.Add(new KeyValuePair<string, string>("hidden", "1"));
+                parameters.Add(new KeyValuePair<string, string>("subject", subject));
+                parameters.Add(new KeyValuePair<string, string>("body", comment));
+                
+                return baseAPIurl + ticketID + "/comment?";
             }
         }
 

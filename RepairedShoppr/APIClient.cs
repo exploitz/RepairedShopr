@@ -12,7 +12,7 @@ namespace RepairedShopr
 
     public class APIClient
     {
-        private string APIkey = "";
+        private string APIkey = "80ca8e01-86eb-4b97-866d-04289e3f366f";
         private string APIurl = "https://wwwarlingtoncomputercare.repairshopr.com/api/v1/";
         //private static string api_key;
         private static HttpClient client;
@@ -43,11 +43,6 @@ namespace RepairedShopr
             { get { return progress; } }
             public string Message
             { get { return message; } }
-        }
-
-        public APIClient()
-        {
-            
         }
 
         public bool LoadAPI()
@@ -103,7 +98,7 @@ namespace RepairedShopr
                 //var response = await client.PostAsync("https://wwwarlingtoncomputercare.repairshopr.com/api/v1/tickets/" + ticketID + "/comment?", content);
                 if (response.IsSuccessStatusCode)
                 {
-                    ProgressUpdated(this, new ProgressArgs(100, "<Comment> Ticket comment submitted successfully!"));
+                    ProgressUpdated(this, new ProgressArgs(100, "<API> POST query Complete."));
                 }
             }
         }
